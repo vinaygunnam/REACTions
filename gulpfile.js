@@ -4,7 +4,8 @@ var gulp        = require("gulp")
     transform   = require('vinyl-transform'),
     browserify  = require("browserify"),
     connect     = require("gulp-connect"),
-    watch       = require("gulp-watch");
+    watch       = require("gulp-watch"),
+    ghPages     = require("gulp-gh-pages");
 
 gulp.task("default", ["webserver", "bundle"]);
 
@@ -46,4 +47,9 @@ gulp.task("webserver", function() {
 gulp.task("reload", function() {
     gulp.src("index.html")
         .pipe(connect.reload());
-})
+});
+
+gulp.task("deploy", function() {
+    return gulp.src(["apps/build/**/*", "*.html"])
+                .pipe(ghPages());
+});
