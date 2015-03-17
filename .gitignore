@@ -31,3 +31,6 @@ dist
 
 # No compiled files under the "apps" folder
 apps/**/*.js
+
+# Deployed files
+.publish
